@@ -105,7 +105,7 @@ declare -a TYPES_NAMES=("New Features" "Changed Features" "Bug Fixes")
 for (( i = 0; i < ${#TYPES[@]}; i++ ))
 do
     echo "### ${TYPES_NAMES[i]}" >> temp.txt
-    git log --pretty="*%s [%an] [%ai]" | grep -i "^*${TYPES[i]}" | sed "s/${TYPES[i]}//" >> temp.txt
+    git log --pretty="* %s [%an] [%ai]" | grep -i "^* ${TYPES[i]}" | sed "s/${TYPES[i]}//" >> temp.txt
     echo "" >> temp.txt
 done
 
@@ -118,7 +118,7 @@ done
 NO_TYPE+=")"
 
 echo "### No Type" >> temp.txt
-git log --pretty="*%s [%an] [%ai]" | grep -ivE "${NO_TYPE}" >> temp.txt
+git log --pretty="* %s [%an] [%ai]" | grep -ivE "${NO_TYPE}" >> temp.txt
 echo "" >> temp.txt
 
 # Adds the new messages at the beginning of the CHANGELOG.md file
